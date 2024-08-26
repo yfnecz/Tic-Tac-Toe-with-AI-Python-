@@ -39,16 +39,14 @@ class TicTacToe:
                 result = 'Draw'
         return result
 
-    def get_current_players(self, game=None):
-        if game is None:
-            game = self.game
+    def get_current_players(self):
         playing = []
         if np.count_nonzero(self.game == 'X') == np.count_nonzero(self.game == 'O'):
             playing = ['X', 'O']
         else:
             playing = ['O', 'X']
         return playing
-    
+
     def get_free_cells(self, game=None):
         if game is None:
             game = self.game
