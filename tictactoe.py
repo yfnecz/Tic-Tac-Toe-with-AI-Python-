@@ -39,6 +39,15 @@ class TicTacToe:
                 result = 'Draw'
         return result
 
+    def get_current_players(self, game=None):
+        if game is None:
+            game = self.game
+        playing = []
+        if np.count_nonzero(self.game == 'X') == np.count_nonzero(self.game == 'O'):
+            playing = ['X', 'O']
+        else:
+            playing = ['O', 'X']
+        return playing
     def get_free_cells(self, game=None):
         if game is None:
             game = self.game
@@ -47,10 +56,8 @@ class TicTacToe:
     def make_easy_move_helper(self):
         free_cells = self.get_free_cells()
         move = choice(free_cells)
-        if np.count_nonzero(self.game == 'X') == np.count_nonzero(self.game == 'O'):
-            self.game[move[0]][move[1]] = 'X'
-        else:
-            self.game[move[0]][move[1]] = 'O'
+        playing = self.get_current_players()
+        self.game[move[0]][move[1]] = playing[0]
 
     def make_easy_move(self):
         print('Making move level "easy"')
@@ -62,11 +69,7 @@ class TicTacToe:
         if np.count_nonzero(self.game == ' ') > 8:
             self.make_easy_move_helper()  # random move on empty board
         else:
-            playing = []
-            if np.count_nonzero(self.game == 'X') == np.count_nonzero(self.game == 'O'):
-                playing = ['X', 'O']
-            else:
-                playing = ['O', 'X']
+            playing = self.get_current_players()
             free_cells = self.get_free_cells()
             found = False
             opponent_cells = []
@@ -127,10 +130,7 @@ class TicTacToe:
         if np.count_nonzero(self.game == ' ') > 8:
             self.make_easy_move_helper()  # random move on empty board
         else:
-            if np.count_nonzero(self.game == 'X') == np.count_nonzero(self.game == 'O'):
-                playing = ['X', 'O']
-            else:
-                playing = ['O', 'X']
+            playing = self.get_current_players()
             free_cells = self.get_free_cells()
             scores = dict()
             for cell in free_cells:
@@ -208,4 +208,3 @@ if __name__ == '__main__':
                     print(result)
                     game_on = False
                     break
-
