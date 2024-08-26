@@ -48,6 +48,7 @@ class TicTacToe:
         else:
             playing = ['O', 'X']
         return playing
+    
     def get_free_cells(self, game=None):
         if game is None:
             game = self.game
