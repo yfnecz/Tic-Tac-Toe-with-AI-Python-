@@ -18,7 +18,7 @@ When the AI is playing at hard level, it uses [the minimax algorithm](https://ww
 
 It is possible to play user vs computer at any level, user vs user, or watch computer play against itself (on different or same levels).
 
-Example
+Example 1
 
 ```
 Input command: > start hard user
@@ -67,4 +67,71 @@ Making move level "hard"
 X wins
 
 Input command: > exit
+```
+
+Example 2
+
+```
+Input command: start hard hard
+---------
+|       |
+|       |
+|       |
+---------
+Making move level "hard"
+---------
+|       |
+|       |
+|   X   |
+---------
+Making move level "hard"
+---------
+|   O   |
+|       |
+|   X   |
+---------
+Making move level "hard"
+---------
+| X O   |
+|       |
+|   X   |
+---------
+Making move level "hard"
+---------
+| X O   |
+|       |
+| O X   |
+---------
+Making move level "hard"
+---------
+| X O X |
+|       |
+| O X   |
+---------
+Making move level "hard"
+---------
+| X O X |
+|   O   |
+| O X   |
+---------
+Making move level "hard"
+---------
+| X O X |
+| X O   |
+| O X   |
+---------
+Making move level "hard"
+---------
+| X O X |
+| X O O |
+| O X   |
+---------
+Making move level "hard"
+---------
+| X O X |
+| X O O |
+| O X X |
+---------
+Draw
+Input command: exit
 ```
