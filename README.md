@@ -1,10 +1,27 @@
-# Tic-Tac-Toe-with-AI-Python-
+# [Tic-Tac-Toe-with-AI-Python](https://tic-tac-toe-with-ai-python.onrender.com/)
 
 
 An educational project with the Tic-Tac-Toe game.
 There are 4 options: user, easy, medium and hard computer modes.
 
-In user mode, user enters the coordinates.
+Deployed using render
+# [Check it out](https://tic-tac-toe-with-ai-python.onrender.com/)
+
+To run locally using docker
+
+```
+docker build -t tic-tac-toe .
+```
+
+```
+docker run -p 5000:5000 tic-tac-toe
+```
+
+And open
+http://127.0.0.1:5000/
+
+
+In user mode, user chooses the cell.
 
 On easy level, the computer just makes random moves.
 
@@ -18,120 +35,4 @@ When the AI is playing at hard level, it uses [the minimax algorithm](https://ww
 
 It is possible to play user vs computer at any level, user vs user, or watch computer play against itself (on different or same levels).
 
-Example 1
 
-```
-Input command: > start hard user
-Making move level "hard"
----------
-|       |
-| X     |
-|       |
----------
-Enter the coordinates: > 2 2
----------
-|       |
-| X O   |
-|       |
----------
-Making move level "hard"
----------
-|   X   |
-| X O   |
-|       |
----------
-Enter the coordinates: > 3 2
----------
-|   X   |
-| X O   |
-|   O   |
----------
-Making move level "hard"
----------
-| X X   |
-| X O   |
-|   O   |
----------
-Enter the coordinates: > 3 1
----------
-| X X   |
-| X O   |
-| O O   |
----------
-Making move level "hard"
----------
-| X X X |
-| X O   |
-| O O   |
----------
-X wins
-
-Input command: > exit
-```
-
-Example 2
-
-```
-Input command: start hard hard
----------
-|       |
-|       |
-|       |
----------
-Making move level "hard"
----------
-|       |
-|       |
-|   X   |
----------
-Making move level "hard"
----------
-|   O   |
-|       |
-|   X   |
----------
-Making move level "hard"
----------
-| X O   |
-|       |
-|   X   |
----------
-Making move level "hard"
----------
-| X O   |
-|       |
-| O X   |
----------
-Making move level "hard"
----------
-| X O X |
-|       |
-| O X   |
----------
-Making move level "hard"
----------
-| X O X |
-|   O   |
-| O X   |
----------
-Making move level "hard"
----------
-| X O X |
-| X O   |
-| O X   |
----------
-Making move level "hard"
----------
-| X O X |
-| X O O |
-| O X   |
----------
-Making move level "hard"
----------
-| X O X |
-| X O O |
-| O X X |
----------
-Draw
-Input command: exit
-```
