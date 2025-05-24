@@ -183,7 +183,7 @@ class TicTacToe:
                 return players[1:]
 
 
-if __name__ == '__main__':
+'''if __name__ == '__main__':
     t = TicTacToe()
     while True:
         players = t.get_players()
@@ -206,4 +206,4 @@ if __name__ == '__main__':
                 if result:
                     print(result)
                     game_on = False
-                    break
+                    break'''

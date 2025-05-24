@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+<head>
+    <title>Select Players</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Select Player Types</h1>
+    <form method="post">
+        <label>Player 1:
+            <select name="player1">
+                <option value="user">User</option>
+                <option value="easy">Easy</option>
+                <option value="medium">Medium</option>
+                <option value="hard">Hard</option>
+            </select>
+        </label>
+        <label>Player 2:
+            <select name="player2">
+                <option value="user">User</option>
+                <option value="easy">Easy</option>
+                <option value="medium">Medium</option>
+                <option value="hard">Hard</option>
+            </select>
+        </label>
+        <p></p>
+        <button type="submit">Start Game</button>
+    </form>
+</body>
+</html>

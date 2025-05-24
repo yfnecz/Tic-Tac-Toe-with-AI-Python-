@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+<head>
+    <title>Tic Tac Toe</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Tic Tac Toe</h1>
+    <p>Player 1: {{ players[0] }} | Player 2: {{ players[1] }}</p>
+    <form method="post">
+        <table>
+            {% for i in range(3) %}
+            <tr>
+                {% for j in range(3) %}
+                <td>
+                    {% if game[i][j] == ' ' and players[turn % 2] == 'user' and not message %}
+                        <button type="submit" name="move" value="{{i}},{{j}}">&nbsp;</button>
+                    {% else %}
+                        {{ game[i][j] }}
+                    {% endif %}
+                </td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </table>
+    </form>
+    <p>{{ message }}</p>
+    <a href="{{ url_for('reset') }}">Reset Game</a>
+</body>
+</html>
