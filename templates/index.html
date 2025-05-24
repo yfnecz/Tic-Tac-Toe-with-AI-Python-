@@ -3,6 +3,9 @@
 <head>
     <title>Tic Tac Toe</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    {% if auto_play %}
+    <meta http-equiv="refresh" content="1">
+    {% endif %}
 </head>
 <body>
     <h1>Tic Tac Toe</h1>
