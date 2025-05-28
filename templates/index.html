@@ -28,6 +28,10 @@
         </table>
     </form>
     <p>{{ message }}</p>
+    {% if auto_play %}
+        <div class="spinner"></div>
+        <p>Computer is thinking...</p>
+    {% endif %}
     <a href="{{ url_for('reset') }}">Reset Game</a>
 </body>
 </html>
