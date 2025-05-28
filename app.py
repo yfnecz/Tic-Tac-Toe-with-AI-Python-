@@ -39,15 +39,20 @@ def index():
             else:
                 message = 'Cell occupied!'
 
+        # After user's move, if next is computer, show spinner before move
+        current_player = players[turn % 2]
+        if current_player != 'user' and not message:
+            return render_template('index.html', game=t.game, message=message, players=players, turn=turn, auto_play=True)
+
+    # On GET or after spinner, make computer move if needed
     result = t.count_winner()
     if result:
         message = result
         return render_template('index.html', game=t.game, message=message, players=players, turn=turn, auto_play=False)
 
     current_player = players[turn % 2]
-    auto_play = False
     if current_player != 'user' and not message:
-        # Computer's turn: make a move, then render with auto_play
+        # Computer's turn: make a move, then show spinner for next move if needed
         if current_player == 'easy':
             t.make_easy_move()
         elif current_player == 'medium':
@@ -56,9 +61,12 @@ def index():
             t.make_hard_move()
         session['game'] = t.game.tolist()
         session['turn'] = turn + 1
-        auto_play = True  # Tell the template to auto-refresh
+        # After computer move, check if next is also computer
+        next_player = players[(turn + 1) % 2]
+        auto_play = next_player != 'user'
+        return render_template('index.html', game=t.game, message=message, players=players, turn=turn + 1, auto_play=auto_play)
 
-    return render_template('index.html', game=t.game, message=message, players=players, turn=turn, auto_play=auto_play)
+    return render_template('index.html', game=t.game, message=message, players=players, turn=turn, auto_play=False)
 
 @app.route('/select_players', methods=['GET', 'POST'])
 def select_players():
