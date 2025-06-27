@@ -1,5 +1,6 @@
 import numpy as np
 from random import choice
+import concurrent.futures
 
 
 class TicTacToe:
@@ -132,8 +133,15 @@ class TicTacToe:
             playing = self.get_current_players()
             free_cells = self.get_free_cells()
             scores = dict()
-            for cell in free_cells:
-                scores[(cell[0], cell[1])] = self.minimax(playing[0], True, self.game, cell)
+
+            # Prepare arguments for each process
+            args = [(playing[0], np.copy(self.game), cell) for cell in free_cells]
+
+            with concurrent.futures.ProcessPoolExecutor() as executor:
+                results = executor.map(minimax_helper, args)
+                for cell, score in results:
+                    scores[cell] = score
+
             move = sorted(scores.items(), key=lambda v: v[1], reverse=True)[0][0]
             self.game[move[0]][move[1]] = playing[0]
         self.print_game()
@@ -181,6 +189,12 @@ class TicTacToe:
                 print("Bad parameters!")
             else:
                 return players[1:]
+
+
+def minimax_helper(args):
+    player, game, cell = args
+    ttt = TicTacToe()
+    return cell, ttt.minimax(player, True, game, cell)
 
 
 '''if __name__ == '__main__':
